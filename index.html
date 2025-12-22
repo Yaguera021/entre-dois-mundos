@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre Dois Mundos | Experiência Digital</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #f37021;
+            --bg-dark: #050a0f;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-main: #e0e0e0;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #0d1b2a 0%, #050a0f 100%);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            gap: 60px;
+            padding: 80px 0;
+        }
+
+        .hero-text { flex: 1.2; }
+        .hero-image { flex: 0.8; text-align: center; }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 4px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 0 50px rgba(243,112,33,0.15);
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @media (hover: hover) {
+            .hero-image img {
+                transform: perspective(1000px) rotateY(-8deg);
+            }
+            .hero-image:hover img {
+                transform: perspective(1000px) rotateY(0deg) scale(1.02);
+                box-shadow: 0 0 70px rgba(243,112,33,0.3);
+            }
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            display: block;
+            color: var(--primary-orange);
+            text-shadow: 0 0 20px rgba(243,112,33,0.4);
+        }
+
+        .description {
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 550px;
+            margin-bottom: 45px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            border-left: 3px solid var(--primary-orange);
+            padding-left: 20px;
+        }
+
+        .btn-futuristic {
+            padding: 22px 50px;
+            border: 1px solid var(--primary-orange);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.4s;
+            display: inline-block;
+        }
+
+        .btn-futuristic:hover {
+            background: var(--primary-orange);
+            color: #000;
+            box-shadow: 0 0 40px var(--primary-orange);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 25px;
+            padding-bottom: 100px;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            padding: 40px;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(15px);
+            transition: 0.4s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+            font-family: 'Outfit';
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin-top: 100px;
+            padding: 80px 20px;
+            background: rgba(0,0,0,0.6);
+            border-top: 1px solid var(--border-glass);
+            text-align: center;
+        }
+
+        .powered-by {
+            font-family: 'Outfit';
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .powered-by .brx { color: var(--primary-orange); }
+
+        .social-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .social-nav a {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .social-nav a:hover {
+            color: var(--primary-orange);
+            border-color: var(--primary-orange);
+        }
+
+        .copyright-text {
+            font-size: 0.65rem;
+            color: #444;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 20px;
+            }
+            .hero-image img { max-width: 280px; }
+            .description { margin: 0 auto 40px; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<div class="main-content">
+    <section class="hero">
+        <div class="hero-text">
+            <h1>ENTRE DOIS <span>MUNDOS</span></h1>
+
+            <div class="description">
+                Uma jornada épica pela fronteira entre a curiosidade de uma mente humana e a inteligência artificial.
+                <br><br>
+                <strong>Onde podemos chegar questionando a IA?</strong>
+            </div>
+
+            <a
+              href="https://pay.kiwify.com.br/s8hG37M"
+              class="btn-futuristic"
+              target="_blank"
+            >
+              ADQUIRA SEU E-BOOK
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img
+              src="https://lh3.googleusercontent.com/d/1ZeN1bWw3x1J3E1HCqZoPRAYNIXtVxkaI"
+              alt="Livro Entre Dois Mundos"
+            >
+        </div>
+    </section>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3>01. A Dualidade</h3>
+            <p>Explore a conversa entre pensamentos e dados de forma profunda e inovadora.</p>
+        </div>
+        <div class="feature-card">
+            <h3>02. O Próximo Nível</h3>
+            <p>Dilemas humanos e os possíveis próximos passos da evolução tecnológica.</p>
+        </div>
+        <div class="feature-card">
+            <h3>03. O Manifesto</h3>
+            <p>Até onde podemos ir quando questionamos a própria inteligência artificial?</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="powered-by">
+        Powered by <strong>AI & Creativity</strong> | Developed by <strong class="brx">BRX Labs</strong>
+    </div>
+
+    <nav class="social-nav">
+        <a href="https://www.instagram.com/yagobhmcruz21/" target="_blank">Instagram Autor</a>
+        <a href="https://www.instagram.com/brxlabs/" target="_blank">Instagram BRX</a>
+        <a href="https://www.brxlabs.com.br/" target="_blank">Website Oficial</a>
+    </nav>
+
+    <div class="copyright-text">
+        © 2025 YAGO BÖHM DA CRUZ. TODOS OS DIREITOS RESERVADOS.
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS('particles-js', {
+  particles: {
+    number: { value: 50, density: { enable: true, value_area: 800 } },
+    color: { value: "#f37021" },
+    opacity: { value: 0.2 },
+    size: { value: 2 },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#f37021",
+      opacity: 0.1,
+      width: 1
+    },
+    move: { enable: true, speed: 1 }
+  },
+  interactivity: {
+    events: {
+      onhover: { enable: true, mode: "grab" }
+    }
+  },
+  retina_detect: true
+});
+</script>
+
+</body>
+</html>
